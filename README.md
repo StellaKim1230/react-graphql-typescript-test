@@ -1,44 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-typescript-graphql-tutorial
 
-## Available Scripts
+## 1. 설치과정
 
-In the project directory, you can run:
+### 프로젝트 만들기
 
-### `npm start`
+`$ npx create-react-app graphql-typescript-react --typescript`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 필요한 의존성 모듈 설치
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+`$ yarn add apollo-boost react-apollo react-apollo-hooks graphql-tag graphql`
 
-### `npm test`
+### graphql-codepen/cli 설치
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`$ yarn add -D @graphql-codegen/cli`
 
-### `npm run build`
+`$ gpl-gen init` 시 수행 단계
+1. React로 빌드 된 애플리케이션.
+2. 스키마는 아래 url로 정의한다. `https://spacexdata.herokuapp.com/graphql`
+3. 쿼리 선언을 위해 모든 TypeScript 파일을 검색 할 수 있도록 작업 및 조각 위치를 설정해야한다. `../src/components/**/*.{ts,tsx}`
+4. 기본 플러그인 "TypeScript", "TypeScript Operations", "TypeScript React Apollo"를 사용한다.
+5. 생성된 대상을 (.tsx는 react-apollo 플러그인에 필요)로 업데이트 해야한다. `src/generated/graphql.tsx`
+6. 내부 검사 파일을 생성하지 마십시오.
+7. 기본 파일을 사용한다. `codegen.yml`
+8. 실행 스크립트를 작성한다. `codegen` `yarn codegen`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 추가 작업 사항
+* scss 사용할 경우 의존성 node-sass를 설치해야 한다.
+* query.ts 에서 쿼리 작성 후 codegen을 한번 실행줘야 작성한 쿼리가 적용된다.
+* 추가로 의존성 모듈 설치함
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```
+"@graphql-codegen/typescript"
+"@graphql-codegen/typescript-operations"
+"@graphql-codegen/typescript-react-apollo"
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[참고 사이트](https://blog.logrocket.com/build-a-graphql-react-app-with-typescript/)
